@@ -1,4 +1,4 @@
-// API Routes
+// API Routes with Gas Fee Endpoints
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
@@ -18,5 +18,9 @@ router.post('/auth/logout', authController.logout.bind(authController));
 router.post('/trades/execute', tradeController.executeTrade.bind(tradeController));
 router.get('/trades/history', tradeController.getTradeHistory.bind(tradeController));
 router.delete('/trades/:id', tradeController.cancelTrade.bind(tradeController));
+
+// Gas Fee routes
+router.get('/gas-fees/statistics', tradeController.getGasFeeStatistics.bind(tradeController));
+router.get('/gas-fees/accumulated', tradeController.getAccumulatedFees.bind(tradeController));
 
 module.exports = router;
